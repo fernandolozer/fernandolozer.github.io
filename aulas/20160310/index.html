@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Hello World</title>
+        <title>Aula do dia 10/03/2016</title>
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
         <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     </head> 
@@ -15,10 +15,36 @@
             
             var camadaImagem = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png');
             camadaImagem.addTo(map);
-            var marcador = L.marker(ufesLatLong, {draggable: true});
-            marcador.addTo(map);
+            //var marcador = L.marker(ufesLatLong, {draggable: true});
+            //marcador.addTo(map);
             
-            marcador.on("dragend", function(){alert(marcador.getLatLng());});
+            //marcador.on("dragend", function(){alert(marcador.getLatLng());});
+            
+            var caminhoLatLng =[
+                 [ -20.25857371424856,-40.2729606628418],
+                 [ -20.26598148437589,-40.2706432342529],
+                 [ -20.26751130589299,-40.2712440490722],
+                 [ -20.27081244830014,-40.2772521972656],
+                 [ -20.27338890088379,-40.2805137634277],
+                 [ -20.27210067994104,-40.2830886840820],
+                 [ -20.27278504864895,-40.2845478057861],
+                 [ -20.27278504864895,-40.2851915359497],
+                 [ -20.26626329473601,-40.2963495254516],
+                 [ -20.26590096703613,-40.2969074249267],
+                 [ -20.26578019094818,-40.2973365783691],
+                 [ -20.26960472142118,-40.3007268905639],
+                 [ -20.27073193346738,-40.3012847900390],
+                 [ -20.27290581928398,-40.3008985519409], 
+                 [ -20.2756432617894,-40.3008127212524]];
+                 
+            var linha = L.polyline(caminhoLatLng);
+
+           // [-20.2819230943766,-40.2987098693847],
+        //    [-20.2824061478874,-40.2940750122070],
+        //    [-20.2868340682675,-40.2947616577148],
+        //    [-20.2861095081330,-40.2993106842040],
+        //    [-20.2819230943766,-40.2987098693847]]
+            
         </script>
 
     </body>
