@@ -15,10 +15,10 @@
             
             var camadaImagem = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png');
             camadaImagem.addTo(map);
-            var marcador = L.marker(ufesLatLong);
+            var marcador = L.marker(ufesLatLong, {draggable: true});
             marcador.addTo(map);
             
-            marcador.on("click", function(){alert('olá');});
+            marcador.on("dragend", function(){alert(marcador.getLatLng());});
         </script>
 
     </body>
