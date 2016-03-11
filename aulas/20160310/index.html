@@ -17,6 +17,8 @@
             camadaImagem.addTo(map);
             var marcador = L.marker(ufesLatLong);
             marcador.addTo(map);
+            
+            marcador.on("click", function(){alert('olá');});
         </script>
 
     </body>
