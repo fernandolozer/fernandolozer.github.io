@@ -6,7 +6,7 @@
     </head> 
   <body>
         <h1 id="Aula1">Aula do dia 10/03/2016</h1>
-        <div id="map" style="height:300px; width:300px"></div>
+        <div id="map" style="height:100%"></div>
         <script>
             var map = L.map('map');
             
@@ -38,7 +38,7 @@
                  [ -20.2756432617894,-40.3008127212524]];
                  
             var linha = L.polyline(caminhoLatLng, {color: 'red', weight: 5});
-
+            linha.addTo(map);
            // [-20.2819230943766,-40.2987098693847],
         //    [-20.2824061478874,-40.2940750122070],
         //    [-20.2868340682675,-40.2947616577148],
