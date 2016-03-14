@@ -7,7 +7,7 @@
   <body>
         <h1 id="Aula1">Aula do dia 14/03/2016</h1>
         
-        <canvas id="myCanvas" style="border:1px solid #d3d3d3;">
+        <canvas id="myCanvas" width="1024" height="758" style="border:1px solid #d3d3d3;">
         Your browser does not support the HTML5 canvas tag.</canvas>
 
         <script>
@@ -15,6 +15,7 @@
           function desenhaTudo (){
             draw();
             desenha2();
+						desenhaTexto();
           }
           
           function desenha2(){
@@ -35,16 +36,37 @@
             ctx.stroke();
           }
           
-          function draw(){
-          var canvas = document.getElementById('myCanvas');
-          var ctx = canvas.getContext('2d');
+          function desenhaTexto(){
+            var canvas = document.getElementById('myCanvas');
+            var ctx = canvas.getContext('2d');
+						            ctx.fillStyle = "red"; 
 
-          ctx.fillStyle = "green"; 
-          ctx.beginPath();
-          ctx.arc(50, 50, 25, 0, Math.PI*2, true);
-          ctx.closePath();
-          ctx.fill();
-        }
+            ctx.font = '20pt Arial';
+            textobj = ctx.measureText("Teste de cadastro de texto... ");
+						width = textobj.width;
+            if(width < 600)
+              {
+                ctx.fillText("asdfasdfasdfasdfasdf", 100,300);
+              }
+            else
+              {
+                                ctx.fillText("não deu. ", 100,300);
+
+                
+              }
+            
+          }
+          
+          function draw(){
+            var canvas = document.getElementById('myCanvas');
+            var ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = "green"; 
+            ctx.beginPath();
+            ctx.arc(50, 50, 25, 0, Math.PI*2, true);
+            ctx.closePath();
+            ctx.fill();
+          }
 
         window.onload = desenhaTudo;
 
