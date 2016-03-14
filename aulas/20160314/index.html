@@ -11,36 +11,45 @@
         Your browser does not support the HTML5 canvas tag.</canvas>
 
         <script>
-        function draw(){
-        var canvas = document.getElementById('myCanvas');
-        var ctx = canvas.getContext('2d');
+          
+          function desenhaTudo (){
+            draw();
+            desenha2();
+          }
+          
+          function desenha2(){
+            var canvas = document.getElementById('myCanvas');
+            var ctx = canvas.getContext('2d');
 
-        ctx.fillStyle = "green"; 
-        ctx.beginPath();
-        ctx.arc(50, 50, 25, 0, Math.PI*2, true);
-        ctx.closePath();
-        ctx.fill();
-      }
+            ctx.fillStyle = "green"; 
+            var controlPt1 = {x:110,y:30};
+            var controlPt2 = {x:130,y:80};
+            var startPt = {x:75,y:140};
+            ctx.beginPath();  //prepare path
+            ctx.moveTo(startPt.x,startPt.y);
+            ctx.bezierCurveTo(
+              controlPt1.x,controlPt1.y,
+              controlPt2.x,controlPt2.y,
+              startPt.x,startPt.y
+            );
+            ctx.stroke();
+          }
+          
+          function draw(){
+          var canvas = document.getElementById('myCanvas');
+          var ctx = canvas.getContext('2d');
 
-      window.onload = draw;
+          ctx.fillStyle = "green"; 
+          ctx.beginPath();
+          ctx.arc(50, 50, 25, 0, Math.PI*2, true);
+          ctx.closePath();
+          ctx.fill();
+        }
+
+        window.onload = desenhaTudo;
 
 
 
-//         var canvas = document.getElementById('myCanvas');
-//         var ctx = canvas.getContext('2d');
-
-//         ctx.fillStyle = "green"; 
-//         var controlPt1 = {x:110,y:30};
-//         var controlPt2 = {x:130,y:80};
-//         var startPt = {x:75,y:140};
-//         ctx.beginPath();  //prepare path
-//         ctx.moveTo(startPt.x,startPt.y);
-//         ctx.bezierCurveTo(
-//           controlPt1.x,controlPt1.y,
-//           controlPt2.x,controlPt2.y,
-//           startPt.x,startPt.y
-//         );
-//         ctx.stroke();
 
       
 
