@@ -3,33 +3,25 @@
         <!--Para aparecer os acentos corretamente-->
         <meta charset="utf-8">
         <title>Aula do dia 14/03/2016</title>
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     </head> 
   <body>
         <h1 id="Aula1">Aula do dia 14/03/2016</h1>
-        <div id="map" style="height:100%"></div>
-    <canvas id="myCanvas" width="800" height="600"></canvas>
+        
+        <canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML5 canvas tag.</canvas>
 
         <script>
-          function draw(){
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
-
-            // Create gradient
-            var grd = ctx.createLinearGradient(0,0,200,0);
-            grd.addColorStop(0,"red");
-            grd.addColorStop(1,"white");
-
-            // Fill with gradient
-            ctx.fillStyle = grd;
-            ctx.fillRect(10,10,150,80);
-
-
-          }
-
-          window.onload = draw;
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        // Create gradient
+        var grd = ctx.createLinearGradient(0,0,200,0);
+        grd.addColorStop(0,"red");
+        grd.addColorStop(1,"white");
+        // Fill with gradient
+        ctx.fillStyle = grd;
+        ctx.fillRect(10,10,150,80);
         </script>
+
 
     </body>
 </html>
