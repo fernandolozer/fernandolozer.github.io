@@ -39,21 +39,21 @@
           function desenhaTexto(){
             var canvas = document.getElementById('myCanvas');
             var ctx = canvas.getContext('2d');
-						            ctx.fillStyle = "red"; 
+						ctx.fillStyle = "red"; 
 
             ctx.font = '20pt Arial';
             textobj = ctx.measureText("Teste de cadastro de texto... ");
 						width = textobj.width;
             if(width < 600)
-              {
-                ctx.fillText("asdfasdfasdfasdfasdf", 100,300);
-              }
+            {
+              ctx.fillText("asdfasdfasdfasdfasdf", 100,300);
+            }
             else
-              {
+            {
                                 ctx.fillText("não deu. ", 100,300);
 
                 
-              }
+            }
             
           }
           
