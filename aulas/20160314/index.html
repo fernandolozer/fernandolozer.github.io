@@ -13,18 +13,17 @@
 
         <script>
           function draw(){
-            var canvas = document.getElementById('myCanvas');
-            var ctx = canvas.getContext('2d');
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
 
-            ctx.fillStyle = "red";
-            ctx.fillRect(10,10,60,40);
+            // Create gradient
+            var grd = ctx.createLinearGradient(0,0,200,0);
+            grd.addColorStop(0,"red");
+            grd.addColorStop(1,"white");
 
-            var my_gradient = ctx.createLinearGradient(0,0,170,0);
-            my_gradient.addColorStop(0,"black");
-            my_gradient.addColorStop(0.5,"red");
-            my_gradient.addColorStop(1,"white");
-            ctx.fillStyle=my_gradient;
-            ctx.fillRect(100,100,25,25);
+            // Fill with gradient
+            ctx.fillStyle = grd;
+            ctx.fillRect(10,10,150,80);
 
 
           }
