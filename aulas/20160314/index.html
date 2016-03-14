@@ -11,15 +11,39 @@
         Your browser does not support the HTML5 canvas tag.</canvas>
 
         <script>
-        var c = document.getElementById("myCanvas");
-        var ctx = c.getContext("2d");
-        // Create gradient
-        var grd = ctx.createLinearGradient(0,0,200,0);
-        grd.addColorStop(0,"red");
-        grd.addColorStop(1,"white");
-        // Fill with gradient
-        ctx.fillStyle = grd;
-        ctx.fillRect(10,10,150,80);
+        function draw(){
+        var canvas = document.getElementById('myCanvas');
+        var ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = "green"; 
+        ctx.beginPath();
+        ctx.arc(50, 50, 25, 0, Math.PI*2, true);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      window.onload = draw;
+
+
+
+//         var canvas = document.getElementById('myCanvas');
+//         var ctx = canvas.getContext('2d');
+
+//         ctx.fillStyle = "green"; 
+//         var controlPt1 = {x:110,y:30};
+//         var controlPt2 = {x:130,y:80};
+//         var startPt = {x:75,y:140};
+//         ctx.beginPath();  //prepare path
+//         ctx.moveTo(startPt.x,startPt.y);
+//         ctx.bezierCurveTo(
+//           controlPt1.x,controlPt1.y,
+//           controlPt2.x,controlPt2.y,
+//           startPt.x,startPt.y
+//         );
+//         ctx.stroke();
+
+      
+
         </script>
 
 
