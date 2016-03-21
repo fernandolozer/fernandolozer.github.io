@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Aula 2016 03 21</title>
+</head>
+<body>
+	<canvas id="myCanvas" width="1024" height="758" style="border:1px solid #d3d3d3;">
+		Your browser does not support the HTML5 canvas tag.</canvas>
+
+
+		<script type="text/javascript">
+			function init(){
+				var canvas = document.getElementById('myCanvas');
+				var ctx = canvas.getContext('2d');
+
+				var img = new Image();
+				img.onload = function(){
+					ctx.drawImage(img,0,0);
+					var imageData = ctx.getImageData(0,0,img.width, img.height);
+					var dataArray = imageData.data;
+					
+				}
+				img.src="cat.png";
+			}
+			window.onload = init;
+
+		</script>
+
+
+	</body>
+	</html>
