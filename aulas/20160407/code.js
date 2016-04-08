@@ -1,0 +1,96 @@
+var game;
+var avatar;
+var myObstacles = [];
+
+function startGame(){
+	game = new Game(document.getElementById("game"),480,270,updateFunc,20);
+	avatar = new GameObject(30,30,"red", 10, 120);
+	score = new GameObject("30px","Consolas","black",280,40,"text");
+	game.start();
+}
+
+function updateFunc(){
+
+}
+
+function everyInterval(n){
+
+}
+
+window.onkeyup = function(e){
+
+}
+
+function Game(canvas, width, height, updateFunc, time){
+	this.canvas = canvas;
+	this.start = function (){
+		this.canvas.height = height;
+		this.canvas.width = width;
+		this.context = this.canvas.getContext("2d");
+		this.frameno = 0;
+		this.interval = setInterval(updateFunc,time);
+	}
+	this.clear = function(){
+		this.context.clearRect(0,0,this.canvas.width, this.canvas.height);
+	}
+}
+
+function GameObject(width, height, color, x, y, type){
+	this.type = type;
+	this.width = width;
+	this.height = height;
+	this.speedX = 0;
+	this.speedY = 0;
+	this.x = x;
+	this.y = y;
+	this.gravity = 0;
+	this.gravitySpeed = 0;
+	this.update = function(ctx){
+		if(this.type == "text"){
+			ctx.font = this.width + " " + this.height;
+			ctx.fillStyle = color;
+			ctx.fillText(this.text, this.x, this.y);
+		}
+	}
+	this.newPos = function(){
+		this.gravitySpeed += this.gravity;
+		this.x += this.speedX;
+		this.y += this.speedY + this.gravitySpeed;
+		this.hitBottom();
+		this.hitTop();
+	}
+	this.hitBottom = function(){
+		var bottom = game.canvas.height - this.height;
+		if(this.y > bottom){
+			this.y = bottom;
+		}
+	}
+	this.hitTop = function(){
+		var top = 0;
+		if(this.y < top){
+			this.y = top;
+		}
+	}
+	this.crashWith = function(obj2){
+		var myleft = this.x;
+		var myright = this.x + this.width;
+		var mytop = this.y;
+		var mybottom = this.y + this.height;
+
+		var otherleft = obj2.x;
+		var otherright = obj2.x + obj2.width;
+		var othertop = obj2.y;
+		var otherbottom = obj2.y + obj2.height;
+
+		var crash = true;
+		if( (mybottom < othertop) || (mytop > otherbottom)
+			|| (myright < otherleft) || (myleft > otherright) ){
+			crash = false;
+		}
+		return crash;
+	}
+
+}
+
+window.onload = startGame;
+}
