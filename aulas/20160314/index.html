@@ -1,78 +1,84 @@
 <html>
+
     <head>
         <!--Para aparecer os acentos corretamente-->
         <meta charset="utf-8">
         <title>Aula do dia 14/03/2016</title>
-    </head> 
-  <body>
+    </head>
+
+    <body>
         <h1 id="Aula1">Aula do dia 14/03/2016</h1>
-        
+
         <canvas id="myCanvas" width="1024" height="758" style="border:1px solid #d3d3d3;">
-        Your browser does not support the HTML5 canvas tag.</canvas>
+            Your browser does not support the HTML5 canvas tag.</canvas>
 
         <script>
-          
-          function desenhaTudo (){
-            draw();
-            desenha2();
-						desenhaTexto();
-          }
-          
-          function desenha2(){
-            var canvas = document.getElementById('myCanvas');
-            var ctx = canvas.getContext('2d');
-
-            ctx.fillStyle = "green"; 
-            var controlPt1 = {x:110,y:30};
-            var controlPt2 = {x:130,y:80};
-            var startPt = {x:75,y:140};
-            ctx.beginPath();  //prepare path
-            ctx.moveTo(startPt.x,startPt.y);
-            ctx.bezierCurveTo(
-              controlPt1.x,controlPt1.y,
-              controlPt2.x,controlPt2.y,
-              startPt.x,startPt.y
-            );
-            ctx.stroke();
-          }
-          
-          function desenhaTexto(){
-            var canvas = document.getElementById('myCanvas');
-            var ctx = canvas.getContext('2d');
-						ctx.fillStyle = "red"; 
-
-            ctx.font = '20pt Arial';
-            textobj = ctx.measureText("Teste de cadastro de texto... ");
-						width = textobj.width;
-            if(width < 600)
-            {
-              ctx.fillText("asdfasdfasdfasdfasdf", 100,300);
+            function desenhaTudo() {
+                draw();
+                desenha2();
+                desenhaTexto();
             }
-            else
-            {
-                                ctx.fillText("não deu. ", 100,300);
 
-                
+            function desenha2() {
+                var canvas = document.getElementById('myCanvas');
+                var ctx = canvas.getContext('2d');
+
+                ctx.fillStyle = "green";
+                var controlPt1 = {
+                    x: 110,
+                    y: 30
+                };
+                var controlPt2 = {
+                    x: 130,
+                    y: 80
+                };
+                var startPt = {
+                    x: 75,
+                    y: 140
+                };
+                ctx.beginPath(); //prepare path
+                ctx.moveTo(startPt.x, startPt.y);
+                ctx.bezierCurveTo(
+                    controlPt1.x, controlPt1.y,
+                    controlPt2.x, controlPt2.y,
+                    startPt.x, startPt.y
+                );
+                ctx.stroke();
             }
-            
-          }
-          
-          function draw(){
-            var canvas = document.getElementById('myCanvas');
-            var ctx = canvas.getContext('2d');
 
-            ctx.fillStyle = "green"; 
-            ctx.beginPath();
-            ctx.arc(50, 50, 25, 0, Math.PI*2, true);
-            ctx.closePath();
-            ctx.fill();
-          }
+            function desenhaTexto() {
+                var canvas = document.getElementById('myCanvas');
+                var ctx = canvas.getContext('2d');
+                ctx.fillStyle = "red";
 
-        window.onload = desenhaTudo;
+                ctx.font = '20pt Arial';
+                textobj = ctx.measureText("Teste de cadastro de texto... ");
+                width = textobj.width;
+                if (width < 600) {
+                    ctx.fillText("asdfasdfasdfasdfasdf", 100, 300);
+                } else {
+                    ctx.fillText("não deu. ", 100, 300);
 
 
+                }
+
+            }
+
+            function draw() {
+                var canvas = document.getElementById('myCanvas');
+                var ctx = canvas.getContext('2d');
+
+                ctx.fillStyle = "green";
+                ctx.beginPath();
+                ctx.arc(50, 50, 25, 0, Math.PI * 2, true);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            window.onload = desenhaTudo;
         </script>
 
 
     </body>
+
 </html>

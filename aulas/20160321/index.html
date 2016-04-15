@@ -1,78 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Aula 2016 03 21</title>
-</head>
-<body>
-	<canvas id="myCanvas" width="1024" height="758" style="border:1px solid #d3d3d3;">
-		Your browser does not support the HTML5 canvas tag.</canvas>
+
+    <head>
+        <title>Aula 2016 03 21</title>
+    </head>
+
+    <body>
+        <canvas id="myCanvas" width="1024" height="758" style="border:1px solid #d3d3d3;">
+            Your browser does not support the HTML5 canvas tag.</canvas>
 
 
-		<script type="text/javascript">
-			function init(){
-				var canvas = document.getElementById('myCanvas');
-				var ctx = canvas.getContext('2d');
+        <script type="text/javascript">
+            function init() {
+                var canvas = document.getElementById('myCanvas');
+                var ctx = canvas.getContext('2d');
 
-				var img = new Image();
-				img.onload = function(){
-					ctx.drawImage(img,0,0);
-					ctx.drawImage(img,img.width,0);
-					ctx.drawImage(img,img.width*2,0);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.drawImage(img, 0, 0);
+                    ctx.drawImage(img, img.width, 0);
+                    ctx.drawImage(img, img.width * 2, 0);
 
-					var imageData = ctx.getImageData(0,0,img.width, img.height);
-					var dataArray = imageData.data;					
-					for (var i = 0; i < dataArray.length; i +=4 ) {
-						var red = dataArray[i];
-						var green = dataArray[i + 1];
-						var blue = dataArray[i+ 2];
-						var alfa = dataArray[i + 3];
+                    var imageData = ctx.getImageData(0, 0, img.width, img.height);
+                    var dataArray = imageData.data;
+                    for (var i = 0; i < dataArray.length; i += 4) {
+                        var red = dataArray[i];
+                        var green = dataArray[i + 1];
+                        var blue = dataArray[i + 2];
+                        var alfa = dataArray[i + 3];
 
-						var bw =(red + green + blue) / 3;
-						dataArray[i]     = bw;
-						dataArray[i + 1] = bw;
-						dataArray[i + 2] = bw;
-						dataArray[i + 3] = 1 * alfa;						
-					}
-					ctx.putImageData(imageData, 0, 0);
+                        var bw = (red + green + blue) / 3;
+                        dataArray[i] = bw;
+                        dataArray[i + 1] = bw;
+                        dataArray[i + 2] = bw;
+                        dataArray[i + 3] = 1 * alfa;
+                    }
+                    ctx.putImageData(imageData, 0, 0);
 
-					imageData = ctx.getImageData(img.width,0,img.width*2, img.height);
-					dataArray = imageData.data;					
-					for (var i = 0; i < dataArray.length; i+=4) {
-						var red = dataArray[i];
-						var green = dataArray[i + 1];
-						var blue = dataArray[i+ 2];
-						var alfa = dataArray[i + 3];
+                    imageData = ctx.getImageData(img.width, 0, img.width * 2, img.height);
+                    dataArray = imageData.data;
+                    for (var i = 0; i < dataArray.length; i += 4) {
+                        var red = dataArray[i];
+                        var green = dataArray[i + 1];
+                        var blue = dataArray[i + 2];
+                        var alfa = dataArray[i + 3];
 
-						dataArray[i]     = red;
-						dataArray[i + 1] = 0;
-						dataArray[i + 2] = blue;
-						dataArray[i + 3] = 1 * alfa;						
-					}
-					ctx.putImageData(imageData, img.width, 0);
+                        dataArray[i] = red;
+                        dataArray[i + 1] = 0;
+                        dataArray[i + 2] = blue;
+                        dataArray[i + 3] = 1 * alfa;
+                    }
+                    ctx.putImageData(imageData, img.width, 0);
 
-					imageData = ctx.getImageData(img.width*2,0,img.width*3, img.height);
-					dataArray = imageData.data;					
-					for (var i = 0; i < dataArray.length; i+=4) {
-						var red = dataArray[i];
-						var green = dataArray[i + 1];
-						var blue = dataArray[i+ 2];
-						var alfa = dataArray[i + 3];
+                    imageData = ctx.getImageData(img.width * 2, 0, img.width * 3, img.height);
+                    dataArray = imageData.data;
+                    for (var i = 0; i < dataArray.length; i += 4) {
+                        var red = dataArray[i];
+                        var green = dataArray[i + 1];
+                        var blue = dataArray[i + 2];
+                        var alfa = dataArray[i + 3];
 
-						var bw =(red + green + blue) / 3;
-						dataArray[i]     = 0;
-						dataArray[i + 1] = 0;
-						dataArray[i + 2] = blue *2;
-						dataArray[i + 3] = 1 * alfa;						
-					}
-					ctx.putImageData(imageData, img.width * 2, 0);
+                        var bw = (red + green + blue) / 3;
+                        dataArray[i] = 0;
+                        dataArray[i + 1] = 0;
+                        dataArray[i + 2] = blue * 2;
+                        dataArray[i + 3] = 1 * alfa;
+                    }
+                    ctx.putImageData(imageData, img.width * 2, 0);
 
-				}
-				img.src="cat.png";
-			}
-			window.onload = init;
+                }
+                img.src = "cat.png";
+            }
+            window.onload = init;
+        </script>
 
-		</script>
 
+    </body>
 
-	</body>
-	</html>
+</html>
