@@ -1,0 +1,62 @@
+<html>
+	<html>
+	<head>
+	<title> Video Canvas </title> <script>
+	onload = function() {
+		var v = document.getElementById("v");
+
+		var canvas = document.getElementById("c");
+		var context = canvas.getContext('2d');
+
+		var back = document.createElement('canvas');
+		var backcontext = back.getContext('2d');
+
+		var cw, ch;
+
+		v.addEventListener('play', function() {
+			cw = v.clientWidth;
+			ch = v.clientHeight;
+
+			canvas.width = cw;
+			canvas.height = ch;
+			back.width = cw;
+			back.height = ch;
+			draw(v, context, backcontext, cw, ch);
+		});
+	}
+
+function draw(v, c, bc, w, h) {
+	if (v.paused || v.stoped) {
+		return false;
+	}
+	bc.drawImage(v, 0, 0, w, h);
+
+	var idata = bc.getImageData(0, 0, w, h);
+	var data = idata.data;
+
+	for (int i = 0, i <data.length; i++) {
+		var r = data[i];
+		var g = data[i];
+		var b = data[i];
+		var pb = (3*r + 4*g) >>> 3;
+
+
+	}
+
+} </script> </head> <body>
+	<video id = "v"
+controls loop>
+	<source src = "wind.mp4"
+type = "video/mp4">
+	</video> <canvas id = "c"> </canvas> </body> <style> #c {
+		position: absolute;
+		top: 50 % ;
+		left: 50 % ;
+		margin: -180 px 0 0 20 px;
+	}#
+v {
+	position: absolute;
+	top: 50 % ;
+	left: 50 % ;
+	margin: -180 px 0 0 - 500 px;
+} </style> </html>
