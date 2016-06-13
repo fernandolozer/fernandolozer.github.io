@@ -9,25 +9,23 @@ function startGame() {
     score = new GameObject("30px", "Consolas", "black", 280, 40, "text");
     game.start();
     loadHighScores();
-    
-    
+
+
     document.getElementById("btnClear").addEventListener("click",
-    function () {
-        localStorage.clear();
-    }
-);
+        function() {
+            localStorage.clear();
+        }
+    );
 }
-
- // adiciona listener no botao de clear
-
 
 function loadHighScores() {
     var div = document.getElementById("txtHighScore");
     div.innerHTML += '<h1> maiores pontos </h1>';
-    var vetHighScore = localStorage.HighScore;
-    for (var i = 0; i < vetHighScore.length; i++) {
-        
-        div.innerHTML += vetHighScore[i].name + ' pontos: ' + vetHighScore[i].score;
+    var vetHighScore = JSON.parse(localStorage.HighScore);
+    if (Array.isArray(vetHighScore)) {
+        for (var i = 0; i < vetHighScore.length; i++) {
+            div.innerHTML += vetHighScore[i].name + ' pontos: ' + vetHighScore[i].score;
+        }
     }
 }
 
@@ -108,16 +106,20 @@ function Game(canvas, width, height, updateFunc, time) {
     }
     this.registrarFimJogo = function() {
         var nome = prompt('Informe seu nome para ficar salvo! ', 'Seu Nome');
-        var objHigh = new {
+        var objHigh = {
             name: nome,
             score: game.frameno
         };
-        var vetHighScore = localStorage.HighScore;
-        
+        var vetHighScore = JSON.parse(localStorage.HighScore);
+        if (Array.isArray(vetHighScore)) {
+            vetHighScore = [];
+        }
         vetHighScore.push(objHigh);
-        vetHighScore.sort(function(a,b){a.score >= b.score});
-        
-        localStorage.HighScore = vetHighScore;
+        vetHighScore.sort(function(a, b) {
+            a.score >= b.score
+        });
+
+        localStorage.HighScore = JSON.stringify(vetHighScore);
         this.jogoFinalizado = true;
     }
     this.jogoFinalizado = false;
